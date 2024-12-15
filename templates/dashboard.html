@@ -1,0 +1,390 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Education Portal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                <h4 class="card-title text-center">Welcome to the Dashboard</h4>
+                <div class="text-center">
+                    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .header a {
+            text-decoration: none;
+            color: white;
+            background: #FF6B6B;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .header a:hover {
+            background: #FF4A4A;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .progress-container {
+            margin: 20px 0;
+        }
+        .progress-bar {
+            background: #4CAF50;
+            height: 20px;
+            border-radius: 12px;
+            width: 75%;
+            transition: width 0.5s ease;
+        }
+        .announcement, .deadlines {
+            margin: 20px 0;
+        }
+        .announcement h4, .deadlines h4 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>Welcome, {{ username }}!</h1>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+        <div class="progress-container">
+            <h3>Your Learning Progress</h3>
+            <div style="background: #f0f0f0; border-radius: 12px; overflow: hidden;">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-book"></i>
+                <h3>Courses</h3>
+                <p>Access your courses and learning materials.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-tasks"></i>
+                <h3>Assignments</h3>
+                <p>Track your assignments and submissions.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bell"></i>
+                <h3>Announcements</h3>
+                <p>Stay updated with the latest news.</p>
+            </div>
+        </div>
+
+        <div class="announcement">
+            <h4>Announcements</h4>
+            <ul>
+                <li>Mid-term exams start next week. Prepare well!</li>
+                <li>New course on Advanced Python is now available.</li>
+            </ul>
+        </div>
+
+        <div class="deadlines">
+            <h4>Upcoming Deadlines</h4>
+            <ul>
+                <li>Data Science Assignment - 20th December</li>
+                <li>Mathematics Quiz - 22nd December</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .header a {
+            text-decoration: none;
+            color: white;
+            background: #FF6B6B;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .header a:hover {
+            background: #FF4A4A;
+        }
+        .welcome {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .welcome h2 {
+            color: #4CAF50;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .progress-container {
+            margin: 20px 0;
+        }
+        .progress-bar {
+            background: #4CAF50;
+            height: 20px;
+            border-radius: 12px;
+            width: 75%;
+            transition: width 0.5s ease;
+        }
+        .announcement, .deadlines, .quick-links {
+            margin: 20px 0;
+        }
+        .announcement h4, .deadlines h4, .quick-links h4 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .quick-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+        .quick-links a:hover {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>Dashboard | Smart Education</h1>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+        <div class="welcome">
+            <h2>Welcome, {{ username }}!</h2>
+        </div>
+
+        <div class="progress-container">
+            <h3>Your Learning Progress</h3>
+            <div style="background: #f0f0f0; border-radius: 12px; overflow: hidden;">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-book"></i>
+                <h3>Courses</h3>
+                <p>Access your courses and learning materials.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-tasks"></i>
+                <h3>Assignments</h3>
+                <p>Track your assignments and submissions.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bell"></i>
+                <h3>Announcements</h3>
+                <p>Stay updated with the latest news.</p>
+            </div>
+        </div>
+
+        <div class="announcement">
+            <h4>Announcements</h4>
+            <ul>
+                <li>Mid-term exams start next week. Prepare well!</li>
+                <li>New course on Advanced Python is now available.</li>
+            </ul>
+        </div>
+
+        <div class="deadlines">
+            <h4>Upcoming Deadlines</h4>
+            <ul>
+                <li>Data Science Assignment - 20th December</li>
+                <li>Mathematics Quiz - 22nd December</li>
+            </ul>
+        </div>
+
+        <div class="quick-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="https://scholar.google.com" target="_blank">Google Scholar</a></li>
+                <li><a href="https://www.linkedin.com/learning/" target="_blank">LinkedIn Learning</a></li>
+                <li><a href="https://www.udemy.com" target="_blank">Udemy</a></li>
+                <li><a href="https://www.coursera.org" target="_blank">Coursera</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
